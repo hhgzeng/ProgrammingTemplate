@@ -1,1 +1,1 @@
-It's my competitive programming template！
+It's competitive programming template！
