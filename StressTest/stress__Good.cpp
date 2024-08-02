@@ -6,9 +6,8 @@ void solve() {
     freopen("in.txt", "r", stdin);      
     freopen("good.txt", "w", stdout);  
 
-    i64 a, b;
-    std::cin >> a >> b;
-    std::cout << a + b << "\n";
+    // input your code
+    
 }
 
 int main() {
