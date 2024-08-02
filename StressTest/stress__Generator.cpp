@@ -6,10 +6,8 @@ void solve() {
     freopen("in.txt", "w", stdout);
     std::mt19937_64 rng(std::chrono::steady_clock::now().time_since_epoch().count());
     
-    i64 a, b;
-    a = rng() % 1000000 + 1;
-    b = rng() % 1000000 + 1;
-    std::cout << a << " " << b << "\n";
+    // input your code
+    
 }
 
 int main() {
