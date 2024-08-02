@@ -6,6 +6,7 @@ void solve() {
     freopen("in.txt", "r", stdin);
     freopen("bad.txt", "w", stdout);
 
+    // input your code
     
 }
 
