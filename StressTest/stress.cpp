@@ -5,10 +5,8 @@ using i64 = long long;
 void solve() {
     freopen("in.txt", "r", stdin);
     freopen("bad.txt", "w", stdout);
-    i64 a, b;
-    std::cin >> a >> b;
 
-    std::cout << a + b << "\n";
+    
 }
 
 int main() {
