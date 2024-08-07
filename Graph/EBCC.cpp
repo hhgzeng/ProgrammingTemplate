@@ -1,10 +1,12 @@
+std::set<int> point;
+std::set<std::pair<int, int>> bridge;
 std::set<std::pair<int, int>> E;
 
 struct EBCC {
     int n;
     std::vector<std::vector<int>> adj;
-    std::vector<int> stk;
     std::vector<int> dfn, low, bel;
+    std::vector<int> stk;
     int cur, cnt;
     
     EBCC() {}
@@ -23,22 +25,32 @@ struct EBCC {
     }
     
     void addEdge(int u, int v) {
-        adj[u].push_back(v);
-        adj[v].push_back(u);
+        adj[u].emplace_back(v);
+        adj[v].emplace_back(u);
     }
     
     void dfs(int x, int p) {
         dfn[x] = low[x] = cur++;
-        stk.push_back(x);
-        
+        stk.emplace_back(x);
+            
+        int child = 0;
         for (auto y : adj[x]) {
             if (y == p) {
                 continue;
             }
             if (dfn[y] == -1) {
+                child++;
                 E.emplace(x, y);
                 dfs(y, x);
                 low[x] = std::min(low[x], low[y]);
+                if (low[y] >= dfn[x]) {
+                    if (p != -1 && x != p) {
+                        point.emplace(x);
+                    }
+                    if (lwo[y] > dfn[x]) {
+                        bridge.emplace(x, y);
+                    }
+                }
             } else if (bel[y] == -1 && dfn[y] < dfn[x]) {
                 E.emplace(x, y);
                 low[x] = std::min(low[x], dfn[y]);
@@ -54,10 +66,18 @@ struct EBCC {
             } while (y != x);
             cnt++;
         }
+
+        if (p == -1 && child >= 2) {
+            point.emplace(x);
+        }
     }
     
     std::vector<int> work() {
-        dfs(0, -1);
+        for (int i = 0; i < n; i++) {
+            if (dfn[i] == -1) {
+                dfs(i, -1);
+            }
+        }
         return bel;
     }
     
