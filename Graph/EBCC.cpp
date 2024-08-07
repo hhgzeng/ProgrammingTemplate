@@ -43,13 +43,11 @@ struct EBCC {
                 E.emplace(x, y);
                 dfs(y, x);
                 low[x] = std::min(low[x], low[y]);
-                if (low[y] >= dfn[x]) {
-                    if (p != -1 && x != p) {
-                        point.emplace(x);
-                    }
-                    if (lwo[y] > dfn[x]) {
-                        bridge.emplace(x, y);
-                    }
+                if (low[y] >= dfn[x] && p != -1) {
+                    point.emplace(x);
+                }
+                if (low[y] > dfn[x]) {
+                    bridge.emplace(x, y);
                 }
             } else if (bel[y] == -1 && dfn[y] < dfn[x]) {
                 E.emplace(x, y);
