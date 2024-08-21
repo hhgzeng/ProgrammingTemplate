@@ -1,5 +1,5 @@
 struct PAM {
-    static constexpr int ALPHABET_SIZE = 28;
+    static constexpr int ALPHABET_SIZE = 26;
     struct Node {
         int len;
         int link;
